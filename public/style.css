@@ -1,0 +1,565 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    left:0;
+    right:0;
+    box-sizing: border-box;
+}
+
+.indexBody{
+    overflow-x: hidden;
+}
+
+header {
+    background: hsl(0 0% 100% / 0.1);
+    background-color: #532700;
+    align-items: center;
+    display: flex;
+    color: #78553b;
+    padding: 1em;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    top: 0;
+    z-index: 1000;
+}
+    header img {
+        width: 60px;
+        margin-top : 3px;
+        margin-bottom: 5px;
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+nav {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+    background-color:transparent;
+    padding: 0.5em 0;
+    position:absolute;
+    right:250px;
+}
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5em 1em;
+        transition: color 0.3s ease;
+    }
+        nav a:hover {
+            color: #ce933b;
+        }
+
+.addon{
+    position:absolute;
+    right:80px;
+}
+
+.addon a{
+    color:white;
+    text-decoration:none;
+}
+
+.nav-login-form{
+    position:absolute;
+    top:20px;
+    right:80px;
+}
+
+.nav-register-form{
+    position:absolute;
+    top:28px;
+    right:80px;
+}
+
+.nav-register-form a{
+    color:white;
+}
+
+.nav-register-form a:hover{
+    color:#ce933b;
+    text-decoration: none;
+}
+
+
+
+section {
+    padding: 2em;
+    display: none;
+    margin-top: 5px;
+}
+.half-width {
+    width: 50%;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+#map {
+    width: 100%;
+    height: 300px;
+}
+.section {
+    display: block;
+}
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ddd;
+    display: none;
+    z-index: 1000;
+}
+    #intro video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+#transparent-box {
+    background: #ce933b;
+    padding: 20px;
+    max-width: 270px;
+    max-height: 700px;
+}
+#overview h1 {
+
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+}
+#overview p {
+    font-family: 'Times New Roman';
+}
+#overview {
+    position: relative;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 50px;
+    padding: 20px;
+}
+#leftimage {
+    max-width: 400px;
+    max-height: 700px;
+    margin-right: 100px;
+    float: left;
+}
+    #leftimage img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 10px 0 10px 10px;
+        float: left;
+    }
+#rightimage {
+    max-width: 400px;
+    max-height: 700px;
+    margin-left: 90px;
+    float: right;
+}
+    #rightimage img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 10px 0 10px 10px;
+        float: left;
+    }
+#accommodation {
+    position: relative;
+    width:1000px;
+    height: 550px;
+    padding: 50px;
+    background-color: aliceblue;
+    box-shadow: 0 30px 50px #dbdbdb;
+    align-content:center;
+    margin-left:200px;
+
+}
+#slide {
+    align-content:center;
+    width: max-content;
+    margin-top: 50px;
+}
+.item {
+    width: 200px;
+    height: 300px;
+    background-position: 50% 50%;
+    display: inline-block;
+    transition: 0.5s;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+}
+    .item:nth-child(1),
+    .item:nth-child(2) {
+        left: 0;
+        top: 0;
+        transform: translate(0,0);
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+    }
+
+    .item:nth-child(3) {
+        left: calc(50% + 220px);
+    }
+
+    .item:nth-child(n+4) {
+        left: calc(50% + 440px);
+    }
+    .item .transperant {
+        position: relative;
+        background-color: antiquewhite;
+        opacity: 0.7;
+        z-index: 10000;
+        height: 310px;
+        left: 100px;
+        margin-top: 200px;
+        padding: 0;
+        margin-left: 0px;
+        width: 330px;
+        border-radius: 10px;
+        animation: showtransperant 1s ease-in-out forwards;
+    }
+    .item:nth-child(3) .transperant,
+    .item:nth-child(n+4) .transperant {
+        display: none;
+    }
+
+@keyframes showtransperant {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.7;
+    }
+}
+    .item .content {
+        position: relative;
+        top: 150px;
+        left: 10px;
+        width: 300px;
+        text-align: left;
+        padding: 0;
+        color: #532700;
+        display: none;
+        transform: translate(0,-50%);
+        font-family: system-ui;
+    }
+
+    .item:nth-child(2) .content {
+        display: block;
+        z-index: 11111;
+    }
+    .item .name {
+        font-size: 40px;
+        font-weight: bold;
+        opacity: 0;
+        z-index: 120000;
+        animation: showcontent 1s ease-in-out 1 forwards
+    }
+    .item .des {
+        margin: 20px 0;
+        opacity: 0;
+        z-index: 120000;
+        animation: showcontent 1s ease-in-out 0.3s 1 forwards
+    }
+
+@keyframes showcontent {
+    from {
+        opacity: 0;
+        transform: translate(0,100px);
+        filter: blur(33px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0,0);
+        filter: blur(0);
+    }
+}
+.buttons {
+    position: absolute;
+    bottom: 30px;
+    z-index: 999;
+    text-align: center;
+    width: 100%;
+}
+    .buttons button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #555;
+        transition: 0.5s;
+    }
+
+        .buttons button:hover {
+            background-color: #78553b;
+        }
+#cuisineh {
+    position: relative;
+    margin-top:100px;
+}
+#cuisineh h1 {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #532700;
+    font-size: 50px;
+}
+#cuisine {
+    position: relative;
+    width: 95%;
+    display: flex;
+    overflow-x: hidden;
+    height: 370px;
+
+}
+    #cuisine p {
+        color: #532700;
+        font-family: 'Times New Roman';
+        font-size:large;
+    }
+#wrapper{
+    position:relative;
+}
+#wrapper i {
+    height:50px;
+    width:50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    box-shadow:0 3px 6px rgba(0,0,0,0.23);
+    z-index:1;
+}
+#wrapper i:first-child{
+    left:20px;
+}
+#wrapper i:last-child{
+    right:20px;
+}
+#transparent-box1 {
+    background-color: transparent;
+    padding: 20px;
+    width: 400px;
+    height: auto;
+    margin-right: 0;
+    margin-left: 0;
+    color: white;
+    align-items: center;
+    margin-top: 0px;
+    border-radius: 10px;
+    position:relative;
+}
+    #transparent-box1:hover #Trap,
+    #transparent-box1:hover #Resp,
+    #transparent-box1:hover #Teap,
+    #transparent-box1:hover #Decp,
+    #transparent-box1:hover #Intp,
+    #transparent-box1:hover #Sefp {
+        opacity: 1;
+    }
+    #transparent-box1:hover img {
+        opacity: 0.5;
+    }
+#Restaurant,
+#TeaLeaves,
+#Tra,
+#Dec,
+#Int,
+#Sef {
+    width: 400px;
+    height: auto;
+    margin-left: 90px;
+    float: right;
+    border-radius: 50px;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+#Resp {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 90px;
+    left: 50px;
+}
+#Teap {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 70px;
+    left: 50px;
+}
+#Trap {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 90px;
+    left: 50px;
+}
+#Decp {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 90px;
+    left: 50px;
+}
+#Intp {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 75px;
+    left: 50px;
+}
+#Sefp {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    display: flex;
+    width: 300px;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    top: 90px;
+    left: 50px;
+}
+#Restaurant img,
+#TeaLeaves img,
+#Tra img,
+#Dec img,
+#Int img,
+#Sef img {
+    width: 100%; /* Adjust the width as needed */
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+footer {
+    background-color: #532700;
+    color: darkgoldenrod;
+    text-align: center;
+    padding: 1em;
+}
+
+
+/* *********************************Register Form************************* */
+
+.container{
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 1920px;
+    height: 100vh;
+    background-color: #fff;
+
+    position:relative;
+}
+
+.regLogo{
+    position:absolute;
+    top:5px;
+    left:50px;
+}
+
+.regContainer{
+    width:500px;
+    height:420px;
+    background-color: #f4f4f4;
+    border-radius: 2%;
+
+    position:absolute;
+    top:110px;
+    left:80px;
+}
+
+.container .image{
+    position:absolute;
+    top:140px;
+    right:60px;
+}
+
+.regContainer .btn{
+    background-color:#532700;
+    color:#fff;
+    margin-left:28px;
+}
+
+/* ***************************Login Container**************** */
+
+.loginbody{
+    height:100vh;
+    overflow:hidden;
+}
+
+.login{
+    margin-top:80px;
+    height: 100vh;
+    /* background-image: url('img/Royal.jpg'); */
+
+    position:relative;
+}
+
+.nav-login-form a:hover{
+    text-decoration:none;
+}
+
+.loginContainer{
+    width:350px;
+    height:320px;
+    background: color #f4f4f4;
+    padding:15px 25px;
+    border-radius:2%;
+
+    position:absolute;
+    top:100px;
+    right:60px;
+}
+
+.loginLogo{
+    position:absolute;
+    top:6px;
+    left:40px;
+}
+
+.loginpage-image{
+    position: absolute;
+    top:0px;
+}
