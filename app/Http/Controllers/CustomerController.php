@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -24,7 +25,6 @@ class CustomerController extends Controller
         // ]);
 
         $customer = new Customer();
-        $customer->name=request()->name;
         $customer->username=request()->username;
         $customer->email=request()->email;
         $customer->password=request()->password;
@@ -32,27 +32,10 @@ class CustomerController extends Controller
 
         $ref=request()->ref;
         if($ref === 'register'){
-            return redirect('login')->with('success','Data has been saved');
+            return redirect('/')->with('success','Data has been saved');
         }
 
     }
 
-    public function customerLogin(){
-        $email = request()->email;
-        $password = request()->password;
-        $checkUser = Customer::where(['email'=>$email,'password'=>$password])->count();
-        if($checkUser > 0){
-            $checkUser = Customer::where(['email'=>$email,'password'=>$password])->get();
-            session(['customerLogin'=>true,'data'=>$checkUser]);
-            return redirect('/');
-        }
-        else{
-            return redirect('/login')->with('error','Invalid email or password!');
-        }
-    }
 
-    public function logout(){
-        session()->forget(['customerLogin','data']);
-        return redirect('/login');
-    }
 }

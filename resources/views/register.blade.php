@@ -28,13 +28,14 @@
     </header>
     <div class="container">
         <div class="regContainer">
+            <p class="reg-title">Register Here</p>
                     @if (Session::has('success'))
 
                      @endif
 
-                      <form action="/register" method="POST" class="mx-1 mx-md-4" style="margin-top:40px">
+                      <form action="/register" method="POST" class="mx-1 mx-md-4" style="margin-top:60px">
                         @csrf
-                        <div class="d-flex flex-row align-items-center mb-2">
+                        {{-- <div class="d-flex flex-row align-items-center mb-2">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example1c">Name<span class="text-danger">*</span></label>
@@ -43,7 +44,7 @@
                         </div>
                         @error('name')
                             <p class="text-danger">{{$message}}</p>
-                        @enderror
+                        @enderror --}}
 
                         <div class="d-flex flex-row align-items-center mb-2">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>

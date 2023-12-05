@@ -60,6 +60,12 @@ nav {
 .addon a{
     color:white;
     text-decoration:none;
+
+    margin-right: 25px;
+}
+
+.addon a:hover{
+    color:#ce933b;
 }
 
 .nav-login-form{
@@ -501,13 +507,23 @@ footer {
 
 .regContainer{
     width:500px;
-    height:420px;
+    height:390px;
     background-color: #f4f4f4;
     border-radius: 2%;
 
     position:absolute;
-    top:110px;
+    top:130px;
     left:80px;
+}
+
+.reg-title{
+    color:#532700;
+    font-size:25px;
+    font-weight: bold;
+
+    position:absolute;
+    top:10px;
+    left:50px;
 }
 
 .container .image{
@@ -520,6 +536,12 @@ footer {
     background-color:#532700;
     color:#fff;
     margin-left:28px;
+}
+
+.register{
+    position: absolute;
+    bottom:25px;
+    left:80px;
 }
 
 /* ***************************Login Container**************** */
@@ -563,3 +585,32 @@ footer {
     position: absolute;
     top:0px;
 }
+
+.password-toggle {
+    position: relative;
+}
+.toggle-icon {
+    font-size:13px;
+    position: absolute;
+    right: 10px;
+    top: 52px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* .login-sub-container{
+    position: relative;
+    background-color: yellow;
+}
+
+.login-sub-container i{
+    position: absolute;
+    top:50%;
+    left:0;
+}
+
+.login-sub-container email{
+    position: absolute;
+    top:20px;;
+    left:100px;
+} */

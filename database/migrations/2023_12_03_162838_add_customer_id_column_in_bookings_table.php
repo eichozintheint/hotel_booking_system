@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->unsignedBigInteger('customer_id')->after('id');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('customer_id');
+        });
     }
 };

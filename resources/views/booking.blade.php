@@ -12,6 +12,7 @@
     <h1>Booking Page</h1>
     {{-- <img src="../../img/royal-bagan-logo.png" alt="logo" width="500px" height="500px"/> --}}
     <div class="container">
+        <div class="column">
         <form action="/booking" method="POST">
             @csrf
 
@@ -31,42 +32,42 @@
                 <p class="text-danger">{{$message}}</p>
             @enderror
 
-            {{-- <div class="form-group my-3">
-                <label for="roomTypes">Room Types</label>
-                    <select name="roomTypes" id="roomTypes" onchange="showRooms()">
-                        @foreach ($roomTypes as $roomType)
-                            <option value="{{$roomType->title}}">{{$roomType->title}}</option>
-                        @endforeach
-                    </select>
-            </div>
-            @error('roomTypes')
-                <p class="text-danger">{{$message}}</p>
-            @enderror --}}
-
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Room Types
-                </button>
-                <ul class="dropdown-menu">
+            <div class="dropdown mb-4">
+                <label for="roomType">Room Type:</label>
+                <select name="roomType" id="roomType">
                     @foreach ($roomTypes as $roomType)
-                        <li><a class="dropdown-item" href="#">{{$roomType->title}}</a></li>
+                        <option value="{{$roomType->title}}">{{$roomType->title}}</option>
                     @endforeach
-                </ul>
-              </div>
-
-            <div class="form-group my-3">
-                <label for="availableRoom">Available Rooms</label>
-                    <select name="availableRoom" id="availableRoom">
-                        @foreach ($rooms as $room)
-                            <option value="{{$room->id}}">{{$room->title}}</option>
-                        @endforeach
-                    </select>
+                </select>
             </div>
-            @error('availableRoom')
+            @error('roomType')
                 <p class="text-danger">{{$message}}</p>
             @enderror
 
-            <div class="form-group my-3">
+              <div class="dropdown mb-4">
+                <label for="room">Available Room Number:</label>
+                <select name="room" id="room">
+                    @foreach ($rooms as $room)
+                    @if (!$booking->where('room',$room->title)->first())
+                        <option value="{{$room->title}}">{{$room->title}}</option>
+                    @endif
+                    @endforeach
+                </select>
+              </div>
+            @error('room')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
+
+            <button type="submit" class="btn btn-primary">Book Now</button>
+
+        </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
+
+ {{-- <div class="form-group my-3">
                 <label for="adault">Total Adault</label>
                 <input type="text" value="{{old('adaults')}}" name="adault" id="adault" class="form-control my-2" placeholder="">
             </div>
@@ -81,33 +82,4 @@
             </div>
             @error('adault')
                 <p class="text-danger">{{$message}}</p>
-            @enderror
-
-            <button type="submit" class="btn btn-primary">Book Now</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
-
-    <script>
-        $(document).on("change", '#roomTypes', function () {
-        var stateUrl = "{{ url('Room::class')}}";
-
-        $.get(stateUrl,
-                {option: $(this).val()},
-                function (data) {
-                    var model = $('#availabelRoom');
-                    model.empty();
-                    model.append("<option>Available room</option>");
-                    $.each(data, function (index, element) {
-                        model.append("<option value='" + element.id + "'>" + element.title + "</option>");
-                    });
-                }
-        );
-    });
-    </script>
-
-
-</body>
-</html>
+            @enderror --}}

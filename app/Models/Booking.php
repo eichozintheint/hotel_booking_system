@@ -17,4 +17,16 @@ class Booking extends Model
         'total_adault',
         'total_child'
     ];
+
+    public function customer(){  //customer_id
+        return $this->hasOne(Customer::class,'customer_id');
+    }
 }
+
+ // customers bookings
+
+    // a customer has one booking
+    // a booking has one customer
+
+    // customer table =>
+    // booking table => customer_id

@@ -26,16 +26,17 @@ Route::get('/', function () {
 Route::get('/register',[CustomerController::class,'register']);
 Route::post('/register',[CustomerController::class,'store']);
 
-Route::get('/login',[CustomerController::class,'login']);
-Route::post('/',[CustomerController::class,'customerLogin']);
+Route::get('/login',[LoginController::class,'createLoginForm']);
+Route::post('/',[LoginController::class,'customerLoggedin']);
 
-Route::get('/logout',[CustomerController::class,'logout']);
+Route::get('/logout',[LoginController::class,'logout']);
 
-// Route::get('/login',[LoginController::class,'create']);
-// Route::post('/login',[LoginController::class,'customer']);
-
-Route::get('/booking',[BookingController::class,'create']);
+Route::get('/booking',[BookingController::class,'BookingCreate']);
 Route::post('/booking',[BookingController::class,'store']);
+
+Route::get('/booking-success',[BookingController::class,'show']);
+
+
 
 
 // customers bookings

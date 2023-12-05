@@ -19,15 +19,21 @@
             <a href="#cuisineh">Cuisine</a>
             <a href="#gallery">Gallery</a>
             <a href="#activities">Activities</a>
-
-            <a href="/booking">Book Now</a>
         </nav>
             <div class="addon">
-                @if (Session::has('customerLogin'))
-                    <a href="/logout" style="margin-right:90px">Log out</a>
+
+                {{-- <a href="{{session()->pull('customerID') ? '/booking' : '/login'}}">Book Now</a> --}}
+
+
+
+                @if (session('customerID'))
+                    {{-- <div class="bookingAndLogout" style="margin-left:180px"> --}}
+                        <a href="/booking" style="margin-left:90px">Book Now</a>
+                        <a href="/logout" style="margin-right:5px">Log out</a>
+                    {{-- </div> --}}
                 @else
-                    <a href="/login" style="margin-right:40px;">Login</a>
-                    <a href="/register">Register</a>
+                    <a href="/login" style="margin-right:100px;">Login</a>
+                    {{-- <a href="/register">Register</a> --}}
                 @endif
             </div>
 
