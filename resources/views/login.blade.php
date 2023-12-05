@@ -63,7 +63,7 @@
                             <input type="password" value="{{ old('password') }}" name="password" id="password"
                                 class="form-control" />
                             <span class="toggle-icon" onclick="togglePasswordVisibility()">
-                                <i class="fa-solid fa-eye-slash"></i>
+                                <i class="fa-solid fa-eye-slash" onclick="toggleIconVisibility()"></i>
                             </span>
                         </div>
                     </div>
@@ -89,9 +89,26 @@
             const passwordInput = document.getElementById('password');
             const currentType = passwordInput.type;
 
+            // const eyeSlash = document.getElementById('eye-slash');
+            // const eyeSlashClass = eyeSlash.class;
+
             // Toggle the password input type between 'password' and 'text'
             passwordInput.type = currentType === 'password' ? 'text' : 'password';
         }
+
+        function toggleIconVisibility() {
+            const eyeSlash = document.getElementById('eye-slash');
+
+
+            if (eyeSlash.classList.contains('fa-eye-slash')) {
+                eyeSlash.classList.remove('fa-eye-slash');
+                eyeSlash.classList.add('fa-eye');
+            } else {
+                eyeSlash.classList.remove('fa-eye');
+                eyeSlash.classList.add('fa-eye-slash');
+            }
+}
+
     </script>
 </body>
 

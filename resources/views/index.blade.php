@@ -194,5 +194,10 @@
         </div>
         <div class="clear"></div>
     </section>
+
+    <footer>
+        <p>&copy; 2023 Royal Bagan. All rights reserved.</p>
+    </footer>
+
 </x-layout>
 
