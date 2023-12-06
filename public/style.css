@@ -699,3 +699,58 @@ footer {
     padding:7px 5px;
     border-radius:5px;
 }
+
+
+/* ******************************Booking History********************************** */
+.booking-history-body{
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
+
+.booking-history-body .header-cover{
+    height:70px;
+}
+
+/* .booking-history{
+    width:300px;
+    height:450px;
+    /* background-color:lightblue; */
+
+    /* position:absolute;
+    top:100px;
+    right:100px; */
+/* } */
+/*
+/* .info{
+    background-color: #482200;
+    color:#d6d3d3;
+    border-radius:10px;
+    padding:5px;
+} */
+
+.first-container{
+
+    position:absolute;
+    top:70px;
+    right:30px;
+}
+
+.info{
+    text-align:center;
+    position:absolute;
+    left:780px;
+    top:300px;
+}
+
+.baganimg2{
+    position:absolute;
+    bottom:-20px;
+    right:0px;
+}
+
+.baganimg3{
+    position:absolute;
+    top:70px;
+    right:330px;
+}

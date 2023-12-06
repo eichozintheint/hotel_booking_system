@@ -17,8 +17,8 @@ class Customer extends Model
 
 
 
-    public function booking(){  // customer_id
-        return $this->hasOne(Booking::class,'customer_id');
+    public function bookings(){  // customer_id
+        return $this->hasMany(Booking::class,'customer_id');
     }
 }
 

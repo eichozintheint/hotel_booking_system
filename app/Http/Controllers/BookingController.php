@@ -95,7 +95,10 @@ class BookingController extends Controller
 
         return view('booking-success',[
             'details'=>Booking::latest()->first(),
-            'totalPrice'=>$totalPrice
+            'totalPrice'=>$totalPrice,
+            'bookingCustomer'=> Booking::latest()->first()->customer->username,
+            'bookingEmail'=> Booking::latest()->first()->customer->email,
+            'totalDays'=>$daysDifference
         ]);
     }
 }
