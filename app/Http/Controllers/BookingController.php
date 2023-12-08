@@ -14,24 +14,30 @@ class BookingController extends Controller
 {
 
     public function BookingCreate(){
+
+        // $roomTypes = RoomType::all();
+        // $selectedRoomType = request('roomType');
+        // $rooms = $selectedRoomType ? RoomType::where('title',$selectedRoomType)->rooms()->pluck('titles') : collect();
+
         return view('booking',[
             'roomTypes'=>RoomType::all(),
             'rooms'=>Room::all(),
             'booking' => Booking::all()
+            // 'roomCheck'=>request('roomType')
         ]);
     }
 
     public function store(){
-        // $cleanData = request()->validate([
-        //     'username'=>['required'],
-        //     'email'=>['required','email'],
-        //     'check-in'=>['required'],
-        //     'check-out'=>['required'],
-        //     'adault'=>['required'],
-        //     'no_of_rooms'=>['required'],
-        //     // 'roomtype'=>['required'],
-        //     'special_request'=>['required']
-        // ]);
+        $cleanData = request()->validate([
+            // 'username'=>['required'],
+            // 'email'=>['required','email'],
+            'check-in'=>['required'],
+            'check-out'=>['required'],
+            // 'adault'=>['required'],
+            'room'=>['required'],
+            'roomType'=>['required']
+            // 'special_request'=>['required']
+        ]);
         // Booking::create(request()->all());
 
 
@@ -105,3 +111,27 @@ class BookingController extends Controller
 
 
 
+    // <?php
+    //                     $roomTypetitle = $roomCheck;
+    //                     $roomTypeID = null;
+    //                     switch ($roomTypetitle) {
+    //                         case 'Superior Room':
+    //                             $roomTypeID = 1;
+    //                             break;
+
+    //                         case 'Deluxe Room':
+    //                             $roomTypeID = 2;
+    //                             break;
+
+    //                         case 'Standard Room':
+    //                             $roomTypeID = 3;
+    //                             break;
+
+    //                         case 'Dormitory Room':
+    //                             $roomTypeID = 4;
+    //                             break;
+
+    //                     }
+    //                     $associatedRooms = $rooms->where('roomtype_id',$roomTypeID);
+    //                     $roomNumbers = $associatedRooms->pluck('title');
+    //                 ?>

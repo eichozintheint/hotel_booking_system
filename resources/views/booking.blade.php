@@ -111,25 +111,27 @@
         <form action="/booking" method="POST">
             @csrf
 
+
             <div class="form-group">
                 <label for="check-in">Check-in Date</label>
                 <input type="date" value="{{old('check-in')}}" id="check-in" name="check-in" class="form-control" />
-            </div>
-            @error('check-in')
+                @error('check-in')
                 <p class="text-danger">{{$message}}</p>
-            @enderror
+                @enderror
+            </div>
 
             <div class="form-group">
                 <label for="check-out">Check-out Date</label>
                 <input type="date" value="{{old('check-out')}}" name="check-out" class="form-control" />
-            </div>
-            @error('check-out')
+                @error('check-out')
                 <p class="text-danger">{{$message}}</p>
-            @enderror
+                @enderror
+            </div>
+
 
             <div class="dropdown">
                 <label for="roomType">Room Type</label><br/>
-                <select name="roomType" id="roomType" class="roomType">
+                <select name="roomType" id="roomType" class="roomType" onchange="updateRoomNumbers()">
                     @foreach ($roomTypes as $roomType)
                         <option value="{{$roomType->title}}">{{$roomType->title}}</option>
                     @endforeach
@@ -140,13 +142,14 @@
             @enderror
 
               <div class="dropdown">
-                <label for="room">Available Room Number:</label><br/>
+                <label for="room">Available Room Number</label><br/>
                 <select name="room" id="room" class="roomNumber">
-                    @foreach ($rooms as $room)
-                    @if (!$booking->where('room',$room->title)->first())
-                        <option value="{{$room->title}}">{{$room->title}}</option>
-                    @endif
-                    @endforeach
+
+                        @foreach ($rooms as $room)
+                        {{-- @if (!$booking->where('room',$associatedRoom->title)->first()) --}}
+                            <option value="{{$room->title}}">{{$room->title}}</option>
+                        {{-- @endif --}}
+                        @endforeach
                 </select>
               </div>
             @error('room')
@@ -160,22 +163,34 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        <!-- Your Blade View -->
+
+<select id="roomType" name="room_type">
+    <!-- Populate room types here -->
+</select>
+
+<select id="roomNumber" name="room_number">
+    <!-- Room numbers will be dynamically populated here -->
+</select>
+
+
+
 </body>
 </html>
+//  {{-- <div class="form-group my-3">
+//                 <label for="adault">Total Adault</label>
+//                 <input type="text" value="{{old('adaults')}}" name="adault" id="adault" class="form-control my-2" placeholder="">
+//             </div>
+//             @error('adault')
+//                 <p class="text-danger
+//                 ">{{$message}}</p>
+//             @enderror
 
- {{-- <div class="form-group my-3">
-                <label for="adault">Total Adault</label>
-                <input type="text" value="{{old('adaults')}}" name="adault" id="adault" class="form-control my-2" placeholder="">
-            </div>
-            @error('adault')
-                <p class="text-danger
-                ">{{$message}}</p>
-            @enderror
-
-            <div class="form-group my-3">
-                <label for="child">Total Child</label>
-                <input type="text" value="{{old('child')}}" name="child" id="child" class="form-control my-2" placeholder="">
-            </div>
-            @error('adault')
-                <p class="text-danger">{{$message}}</p>
-            @enderror --}}
+//             <div class="form-group my-3">
+//                 <label for="child">Total Child</label>
+//                 <input type="text" value="{{old('child')}}" name="child" id="child" class="form-control my-2" placeholder="">
+//             </div>
+//             @error('adault')
+//                 <p class="text-danger">{{$message}}</p>
+//             @enderror --}}
