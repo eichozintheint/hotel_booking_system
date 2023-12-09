@@ -19,12 +19,7 @@ class BookingController extends Controller
         // $selectedRoomType = request('roomType');
         // $rooms = $selectedRoomType ? RoomType::where('title',$selectedRoomType)->rooms()->pluck('titles') : collect();
 
-        return view('booking',[
-            'roomTypes'=>RoomType::all(),
-            'rooms'=>Room::all(),
-            'booking' => Booking::all()
-            // 'roomCheck'=>request('roomType')
-        ]);
+        return view('booking');
     }
 
     public function store(){
@@ -34,7 +29,7 @@ class BookingController extends Controller
             'check-in'=>['required'],
             'check-out'=>['required'],
             // 'adault'=>['required'],
-            'room'=>['required'],
+            // 'room'=>['required'],
             'roomType'=>['required']
             // 'special_request'=>['required']
         ]);
@@ -46,8 +41,8 @@ class BookingController extends Controller
             $booking->check_out_date=request('check-out');
             $booking->room_type=request('roomType');
             $booking->room=request('room');
-            $booking->total_adault=request('adault');
-            $booking->total_child=request('child');
+            // $booking->total_adault=request('adault');
+            // $booking->total_child=request('child');
             $booking->customer_id=session()->pull('customerID');
             $booking->save();
 
@@ -81,15 +76,15 @@ class BookingController extends Controller
 
         $bookingRoomType = Booking::latest()->first()->room_type;
         switch ($bookingRoomType) {
-            case 'Superior Room':
+            case '1':
                 $totalPrice = $daysDifference * $superiorRoomPrice;
                 break;
 
-            case 'Duluxe Room':
+            case '2':
                 $totalPrice = $daysDifference * $deluxeRoomPrice;
                 break;
 
-            case 'Standard Room':
+            case '3':
                 $totalPrice = $daysDifference * $standardRoomPrice;
                 break;
 
@@ -99,8 +94,29 @@ class BookingController extends Controller
                 break;
         }
 
+        $selectedRoomTypeID = Booking::latest()->first()->room_type;
+        $selectedRoomTypeTitle = null;
+        switch ($selectedRoomTypeID) {
+            case '1':
+                $selectedRoomTypeTitle='Superior Room';
+                break;
+
+            case '2':
+                $selectedRoomTypeTitle='Deluxe Room';
+                break;
+
+            case '3':
+                $selectedRoomTypeTitle='Standard Room';
+                break;
+
+            default:
+                $selectedRoomTypeTitle='Dormitory Room';
+                break;
+        }
+
         return view('booking-success',[
             'details'=>Booking::latest()->first(),
+            'selectedRoomTypeTitle'=>$selectedRoomTypeTitle,
             'totalPrice'=>$totalPrice,
             'bookingCustomer'=> Booking::latest()->first()->customer->username,
             'bookingEmail'=> Booking::latest()->first()->customer->email,

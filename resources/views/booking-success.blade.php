@@ -32,7 +32,7 @@
                             <a href="/logout" style="margin-right:5px">Log out</a>
                         {{-- </div> --}}
                     @else
-                        <a href="/login" style="margin-right:100px;">Login</a>
+                        <a href="/logout" style="margin-right:100px;">Logout</a>
                         {{-- <a href="/register">Register</a> --}}
                     @endif
                 </div>
@@ -56,7 +56,7 @@
         <div class="info">
             <p>Check in date : {{$details->check_in_date}}</p>
             <p>Check out date : {{$details->check_out_date}}</p>
-            <p>Room Type : {{$details->room_type}}</p>
+            <p>Room Type : {{$selectedRoomTypeTitle}}</p>
             <p>Room Number : {{$details->room}}</p>
             <p>Booking Status : Pending</p>
 

@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('check_in_date');
             $table->date('check_out_date');
-            $table->string('room_type');
+            $table->unsignedBigInteger('room_type');
             $table->string('room')->unique();
-            $table->string('total_adault')->nullable();
-            $table->string('total_child')->nullable();
             $table->timestamps();
         });
     }

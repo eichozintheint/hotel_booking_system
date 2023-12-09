@@ -7,6 +7,7 @@ use App\Models\RoomType;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Console\Input\Input;
+use App\Livewire\HandleRooms;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/logout',[LoginController::class,'logout']);
 
 Route::get('/booking',[BookingController::class,'BookingCreate']);
 Route::post('/booking',[BookingController::class,'store']);
+// Route::livewire('/handle-rooms', HandleRooms::class);
 
 Route::get('/booking-success',[BookingController::class,'show']);
 
