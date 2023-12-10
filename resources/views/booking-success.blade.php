@@ -58,7 +58,7 @@
             <p>Check out date : {{$details->check_out_date}}</p>
             <p>Room Type : {{$selectedRoomTypeTitle}}</p>
             <p>Room Number : {{$details->room}}</p>
-            <p>Booking Status : Pending</p>
+            <p>Booking Status : {{$details->status}}</p>
 
             <h3>Total price is {{$totalPrice}} MMK.</h3>
             <p style="font-style:italic">Thank you for choosing our service</p>
