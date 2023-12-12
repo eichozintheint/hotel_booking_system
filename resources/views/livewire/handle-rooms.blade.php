@@ -41,7 +41,7 @@
                  <select name="room" id="room" class="roomNumber" wire:model.live="selectedRoom">
                              <option value="">Select a Room</option>
                          @foreach ($rooms as $room)
-                         @if (!$booking->where('room',$room->title)->first())
+                         @if (!$booking->where('room',$room->title)->first() && $room->available_status=='available')
                              <option value="{{$room->title}}">{{$room->title}}</option>
                          @endif
                          @endforeach

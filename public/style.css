@@ -754,3 +754,487 @@ footer {
     top:70px;
     right:330px;
 }
+
+/* ********************************Admin Dashboard************************************* */
+
+.dashboard-body{
+    height:100vh;
+    /* overflow:hidden; */
+
+    position:relative;
+}
+
+.sidebar{
+    width:150px;
+    height:100vh;
+    background-color:#532700;
+
+    position:fixed;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    margin-left:30px;
+}
+
+.logo-img{
+    width:80px;
+    height:80px;
+}
+
+.logo-caption{
+    color:#f4f4f4;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* margin-left:17px; */
+
+    position:absolute;
+    top:60px;
+    left:20px;
+
+}
+
+.categories{
+    width:138px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    position:absolute;
+    top:170px;
+    left:5px;
+}
+
+.categories div{
+    width:128px;
+    padding:10px 5px;
+    margin-bottom:25px;
+    text-align:center;
+    border:1px solid #f4f4f4;
+    border-radius:8px;
+
+    transition: all 0.3s ease;
+}
+
+.categories div:hover{
+    background-color:#f4f4f4;
+}
+
+.categories div:hover a{
+    color:#482200;
+}
+
+.categories div a{
+    text-decoration:none;
+    color:#f4f4f4;
+}
+
+.dashboard-body{
+    background-image:url('img/bagan4.jpg');
+    background-attachment:fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+.left-container{
+    width:1113px;
+    height:500px;
+
+    /* background-color:#e1e1e1; */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    position:absolute;
+    top:0px;
+    right:0px;
+}
+
+.admin-account-panel{
+    width:1113px;
+    height:90px;
+    background-color:#f4f4f4;
+
+    position:fixed;
+    top:0px;
+    right:0px;
+
+    z-index:100;
+}
+
+.searchbar{
+    position:fixed;
+    top:25px;
+    left:650px;
+}
+
+.searchbar .search{
+    background-color:transparent;
+    border:1.5px solid #482200;
+    border-radius:5px;
+    padding:7px;
+}
+
+.notification,.mail{
+    width:30px;
+    height:30px;
+    background-color:#e5e5e5;
+    color:#482200;
+    border-radius:5px;
+    font-size:20px;
+}
+
+.mail{
+    position:absolute;
+    top:25px;
+    right:300px;
+}
+
+.notification{
+    position:absolute;
+    top:25px;
+    right:230px;
+}
+
+.notification:hover,.mail:hover{
+    cursor:pointer;
+}
+
+.notification i,.mail i{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.notification .circle{
+    width:7px;
+    height:7px;
+    background-color:#482200;
+    border-radius:50%;
+
+    position:absolute;
+    top:-1px;
+    right:-1px;
+}
+
+.admin-account-panel .admin{
+    /* background-color: yellow; */
+    position:absolute;
+    top:25px;
+    right:150px;
+}
+
+.admin-account-panel .admin .user-icon{
+    color:#482200;
+    font-size:30px;
+    margin-left:22px;
+    margin-bottom:10px;
+}
+
+.admin-account-panel .admin span{
+    color:#482200;
+    font-size:10px;
+    font-weight:bold;
+    display:block;
+    position:absolute;
+    bottom:-8px;
+    right:-8px;
+}
+
+.adminLogout{
+    position:absolute;
+    top:28px;
+    right:70px;
+}
+
+.adminLogout i{
+    color:#482200;
+    font-size:27px;
+    margin-left:5px;
+}
+
+.adminLogout span{
+    color:#482200;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.dashboard-panel{
+    width:1113px;
+    height:590px;
+    /* background-color:yellow; */
+
+    position:absolute;
+    top:90px;
+    right:0px;
+}
+
+.totalBookings,.newBookings,.acceptedBookings,
+.availableRooms,.checkin,.checkout{
+    width:300px;
+    height:100px;
+    background-color:#532700;
+    color:#f4f4f4;
+    border-radius:10px;
+    opacity:0.9;
+}
+
+.totalBookings{
+    position:absolute;
+    top:63px;
+    left:50px;
+}
+
+.bookingsCount,.scheduleBookingsCount,.acceptedBookingsCount,
+.availableRoomsCount,.checkinCount,.checkoutCount{
+    font-size:40px;
+    font-weight:bold;
+
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+.bookingsCaption,.scheduleBookingsCaption,.acceptedBookingsCaption,
+.availableRoomsCaption,.checkinCaption,.checkoutCaption{
+    font-size:16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    position:absolute;
+    top:65px;
+    left:20px;
+}
+
+.totalBookings i,.newBookings i,.acceptedBookings i,
+.availableRooms i,.checkin i,.checkout i{
+    font-size:30px;
+
+    position:absolute;
+    top:35px;
+    right:30px;
+}
+
+.newBookings{
+    position:absolute;
+    top:63px;
+    left:415px;
+}
+
+.acceptedBookings{
+    position:absolute;
+    top:63px;
+    right:50px;
+}
+
+.availableRooms{
+    position:absolute;
+    top:200px;
+    left:50px;
+}
+
+.checkin{
+    position:absolute;
+    top:200px;
+    left:415px;
+}
+
+.checkout{
+    position:absolute;
+    top:200px;
+    right:50px;
+}
+
+/* ******************************Calendar************************ */
+
+.calendar-container{
+    width:150px;
+    height:80px;
+
+    position:absolute;
+    top:280px;
+    left:50px;
+}
+
+table {
+    border-collapse:collapse;
+    width:350px;
+    height: 10px;
+}
+
+th, td {
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:center;
+}
+
+th {
+    background-color:#f2f2f2;
+}
+
+/* ***********************************Customer Panel************************ */
+
+
+
+.customer-panel{
+    width:1000px;
+    height: 450px;
+    max-height:450px;
+    /* background-color: red; */
+    overflow-y:auto;
+    /* Hide the scrollbar */
+    scrollbar-width: thin;
+    overflow: -moz-scrollbars-none;
+
+
+    position:absolute;
+    top:600px;
+    left:0px;
+}
+
+.customer-panel::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.customer-panel::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+.customer-table{
+    border-collapse: collapse;
+    width:90%;
+
+    position:absolute;
+    top:50px;
+    left:50px;
+}
+
+.customer-table thead{
+    position:sticky;
+    top:0;
+}
+
+.customer-table thead th{
+    background-color:#482200;
+    color:#f4f4f4;
+}
+
+.customer-delete-btn{
+    background-color: #482200;
+    color:#f4f4f4;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:3px 10px;
+    opacity:0.95;
+}
+
+/* ************************************Room Type Panel************************************* */
+
+.roomtype-panel{
+    width:1000px;
+    height:400px;
+    /* background-color:rgb(40, 99, 119); */
+
+    position:absolute;
+    top:1000px;
+    right:0px;
+}
+
+.roomtype-table{
+    border-collapse:collapse;
+    width:90%;
+
+    position:absolute;
+    top:50px;
+    left:50px;
+}
+
+.add-roomtype-btn-1{
+    width:50%;
+    padding:5px 0;
+}
+
+/* .create-roomtype-body{
+    background-image:url('img/bagan2.jpg');
+    background-color:red;
+} */
+
+.create-roomtype-container{
+    width:800px;
+    background-color:yellow;
+}
+
+/* *********************************Room Panel******************** */
+
+.room-panel{
+    width:1000px;
+    max-height:450px;
+    overflow-y:auto;
+    /* Hide the scrollbar */
+    scrollbar-width: thin;
+    overflow: -moz-scrollbars-none;
+
+
+    position:absolute;
+    top:1400px;
+    right:0px;
+}
+
+.room-panel::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.room-panel::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+.room-panel-table{
+    border-collapse:collapse;
+    width:90%;
+
+    /* position:absolute;
+    top:50px;
+    left:50px; */
+}
+
+.room-panel-table thead{
+    position:sticky;
+    top:0;
+}
+
+.room-panel-table tfoot{
+    background-color:#fff;
+    position:sticky;
+    bottom:0;
+}
+
+.room-panel-table thead th{
+    background-color:#482200;
+    color:#f4f4f4;
+    /* opacity:0.95; */
+}
+
+.addnewroom-btn{
+    width:300px;
+    background-color: #482200;
+    color:#f4f4f4;
+    font-size:16px;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:5px 35px;
+}
+
+
+
+.room-update-btn button,.room-delete-btn button{
+    background-color: #482200;
+    color:#f4f4f4;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:3px 10px;
+    opacity:0.95;
+}
+
+tr td{
+    background-color:#f4f4f4;
+    color:#482200;
+    opacity:0.9;
+}
+
+

@@ -27,19 +27,21 @@ class LoginController extends Controller
             $customerID = $getUserData->id;
             session()->put('customerID',$customerID);
             // Session::has(['customerLogin'=>true,'data'=>$getUserData]);
-            return redirect()->intended('/');
+            $getUserType = Customer::where(['email'=>$email,'password'=>$password])->first();
+            if($getUserType->usertype === 'admin'){
+                return redirect()->intended('/dashboard');
+                // dd('admin');
+            }else{
+                return redirect()->intended('/');
+            }
         }
         else{
             return redirect('/login')->with('error','Invalid email or password!');
         }
-
-
     }
 
-
-
     public function logout(){
-        session()->forget(['customerLogin','data']);
+        session()->forget('customerID');
         return redirect('/');
     }
 

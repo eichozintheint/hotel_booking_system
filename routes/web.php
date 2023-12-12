@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
-use App\Models\RoomType;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Console\Input\Input;
-use App\Livewire\HandleRooms;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,37 +35,28 @@ Route::post('/booking',[BookingController::class,'store']);
 
 Route::get('/booking-success',[BookingController::class,'show']);
 
+// Dashboard - customers
+Route::get('/dashboard',[DashboardController::class,'getDataForAdminDashboard']);
+Route::delete('/dashboard/customers/delete/{id}',[DashboardController::class,'destroyCustomer']);
 
+// Dashboard -  create roomType
+Route::get('/dashboard/createroomtype',[DashboardController::class,'createroomtype']);
+Route::post('/dashboard/createroomtype',[DashboardController::class,'storeroomtype']);
 
+// Dashboard - delete roomType
+Route::delete('/dashboard/roomtype/delete/{id}',[DashboardController::class,'destroyRoomtype']);
 
-// customers bookings
+// Dashboard - create room
+Route::get('/dashboard/createnewroom',[DashboardController::class,'createroom']);
+Route::post('/dashboard/createnewroom',[DashboardController::class,'storeroom']);
 
-// a customer has one booking
-// a booking has one customers
+// Dashboard - delete room
+Route::delete('/dashboard/room/delete/{id}',[DashboardController::class,'destroyRoom']);
 
-// customer table =>
-// booking table => customer_id
+// Dashboard - update room
+Route::get('/dashboard/room/update/{id}',[DashboardController::class,'createRoomUpdate']);
+Route::put('/dashboard/room/update/{id}',[DashboardController::class,'storeUpdateRoomAvailability']);
 
-
-
-// Route::get('/rooms', function() {
-//     $input = Input::get_class('RoomType');
-
-//     // Assuming $input is an array of room type IDs
-//     $roomTypes = RoomType::find($input);
-
-//     $rooms = collect();
-
-//     foreach ($roomTypes as $roomType) {
-//         $rooms = $rooms->merge($roomType->rooms()->get(['id', 'title']));
-//     }
-
-//     return response()->json($rooms);
-// });
-
-Route::get('/test',function(){
-    view('test');
-});
 
 
 
