@@ -57,6 +57,12 @@ Route::delete('/dashboard/room/delete/{id}',[DashboardController::class,'destroy
 Route::get('/dashboard/room/update/{id}',[DashboardController::class,'createRoomUpdate']);
 Route::put('/dashboard/room/update/{id}',[DashboardController::class,'storeUpdateRoomAvailability']);
 
+// Dashboard - delete booking
+Route::delete('/dashboard/bookings/delete/{id}',[DashboardController::class,'destroyBooking']);
+
+// Dashboard - update booking
+// Route::get('/dashboard/bookings/update/{id}',[DashboardController::class,'createUpdatedBooking']);
+Route::put('/dashboard/bookings/update/{id}',[DashboardController::class,'storeUpdatedBooking']);
 
 
 

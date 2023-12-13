@@ -81,7 +81,7 @@
             <div class="dashboard-panel" id="dashboard-panel">
 
                 <div class="totalBookings">
-                    <span class="bookingsCount">{{$bookings}}</span>
+                    <span class="bookingsCount">{{$bookingsCount}}</span>
                     <span class="bookingsCaption">Total Bookings</span>
                     <i class="fa-regular fa-bookmark"></i>
                 </div>
@@ -159,12 +159,12 @@
                     <p class="text-danger">{{ session('success') }}</p>
                 @endif
                 <table class="roomtype-table">
-                    <tr>
+                    <thead>
                         <th>id</th>
                         <th>Title</th>
                         <th>Detail</th>
                         <th></th>
-                    </tr>
+                    </thead>
 
                     @foreach ($roomtypes as $roomtype)
                         <tr>
@@ -175,7 +175,7 @@
                                 <form action="dashboard/roomtype/delete/{{$roomtype->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit0">DELETE</button>
+                                    <button type="submit" class="roomtype-delete-btn">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -236,6 +236,114 @@
                                 </td>
                             </form>
                         </tfoot>
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- *****************************Bookings Panel************************  --}}
+            <div class="bookings-cancel-panel" id="bookings-cancel-panel">
+                <table class="bookings-cancel-panel-table">
+                    <thead>
+                        <th>id</th>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Check-In Date</th>
+                        <th>Check-Out Date</th>
+                        <th>Booking Status</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($bookings as $index => $booking)
+                                <tr>
+                                    <td>{{ $booking->id }}</td>
+                                    <td>{{ isset($customerNames[$index]) ? $customerNames[$index] : '-' }}</td>
+                                    <td>{{ isset($customerEmails[$index]) ? $customerEmails[$index] : '-' }}</td>
+                                    <td class="rn">{{$booking->room}}</td>
+                                    <td class="rt">{{ $booking->room_type }}</td>
+                                    <td value="check_in_date">{{ $booking->check_in_date }}</td>
+                                    <td>{{ $booking->check_out_date }}</td>
+                                    <td class="bs" name="status">{{$booking->status}}</td>
+
+                                    <form action="/dashboard/bookings/delete/{{$booking->id}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <td>
+                                            <button type="submit" class="cancel-submit-btn">Cancel</button>
+                                        </td>
+                                    </form>
+
+                                </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="bookings-update-panel" id="bookings-update-panel">
+                <table class="bookings-update-panel-table">
+                    <thead>
+                        <th>id</th>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Check-In Date</th>
+                        <th>Check-Out Date</th>
+                        <th>Booking Status</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($bookings as $index => $booking)
+                    <tr>
+                        <form action="/dashboard/bookings/update/{{$booking->id}}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <td>{{ $booking->id }}</td>
+                        <td>{{ isset($customerNames[$index]) ? $customerNames[$index] : '-' }}</td>
+                        <td>{{ isset($customerEmails[$index]) ? $customerEmails[$index] : '-' }}</td>
+                        <td class="rn">
+                            <select name="update_room_number" id="">
+                                <option value="{{ $booking->room }}">{{ $booking->room }}</option>
+                                @foreach ($rooms as $room)
+                                    @if($room->available_status === 'available')
+                                        <option value="{{ $room->title }}">{{ $room->title }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </td>
+                        <td class="rt">
+                            <select name="update_room_type" id="">
+                                @foreach ($roomtypes as $roomtype)
+                                    <option value="{{ $roomtype->id }}">{{ $roomtype->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="date" name="check_in_date" value="{{ $booking->check_in_date }}">
+                        </td>
+                        <td>
+                            <input type="date" name="check_out_date" value="{{ $booking->check_out_date }}">
+                        </td>
+                        <td class="bs" name="status">
+                            <select name="booking_status" id="">
+                                <option value="{{ $booking->status }}">{{ $booking->status }}</option>
+                                @if ($booking->status === 'pending')
+                                    <option value="accepted">accepted</option>
+                                @else
+                                    <option value="pending">pending</option>
+                                @endif
+                            </select>
+                        </td>
+
+                        <td>
+                            <button type="submit" class="cancel-submit-btn">Update</button>
+                         </td>
+                        </form>
+                    </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>

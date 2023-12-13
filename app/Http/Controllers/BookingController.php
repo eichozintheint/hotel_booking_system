@@ -48,6 +48,14 @@ class BookingController extends Controller
             $booking->customer_id=session()->pull('customerID');
             $booking->save();
 
+            $rooms = Room::all();
+            foreach($rooms as $room){
+                if($room->title === $booking->room){
+                    $room->available_status = 'not available';
+                    $room->save();
+                }
+            };
+
             return redirect('/booking-success');
         }
 

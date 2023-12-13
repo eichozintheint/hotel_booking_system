@@ -836,7 +836,7 @@ footer {
 
 .left-container{
     width:1113px;
-    height:500px;
+    /* height:500px; */
 
     /* background-color:#e1e1e1; */
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -958,7 +958,7 @@ footer {
 
 .dashboard-panel{
     width:1113px;
-    height:590px;
+    height:350px;
     /* background-color:yellow; */
 
     position:absolute;
@@ -978,7 +978,7 @@ footer {
 
 .totalBookings{
     position:absolute;
-    top:63px;
+    top:79px;
     left:50px;
 }
 
@@ -1013,43 +1013,32 @@ footer {
 
 .newBookings{
     position:absolute;
-    top:63px;
+    top:79px;
     left:415px;
 }
 
 .acceptedBookings{
     position:absolute;
-    top:63px;
+    top:79px;
     right:50px;
 }
 
 .availableRooms{
     position:absolute;
-    top:200px;
+    top:220px;
     left:50px;
 }
 
 .checkin{
     position:absolute;
-    top:200px;
+    top:220px;
     left:415px;
 }
 
 .checkout{
     position:absolute;
-    top:200px;
+    top:220px;
     right:50px;
-}
-
-/* ******************************Calendar************************ */
-
-.calendar-container{
-    width:150px;
-    height:80px;
-
-    position:absolute;
-    top:280px;
-    left:50px;
 }
 
 table {
@@ -1074,7 +1063,7 @@ th {
 
 .customer-panel{
     width:1000px;
-    height: 450px;
+    height: 300px;
     max-height:450px;
     /* background-color: red; */
     overflow-y:auto;
@@ -1084,8 +1073,8 @@ th {
 
 
     position:absolute;
-    top:600px;
-    left:0px;
+    top:450px;
+    right:50px;
 }
 
 .customer-panel::-webkit-scrollbar {
@@ -1128,32 +1117,69 @@ th {
 
 .roomtype-panel{
     width:1000px;
-    height:400px;
-    /* background-color:rgb(40, 99, 119); */
+    max-height:450px;
+    overflow-y:auto;
+    /* Hide the scrollbar */
+    scrollbar-width: thin;
+    overflow: -moz-scrollbars-none;
+
 
     position:absolute;
-    top:1000px;
+    top:750px;
     right:0px;
 }
+
+.roomtype-panel::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.roomtype-panel::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
 
 .roomtype-table{
     border-collapse:collapse;
     width:90%;
 
-    position:absolute;
+    /* position:absolute;
     top:50px;
-    left:50px;
+    left:50px; */
+}
+
+.roomtype-table thead{
+    position:sticky;
+    top:0;
+}
+
+.roomtype-table thead th{
+    background-color:#482200;
+    color:#f4f4f4;
+}
+
+.roomtype-table tfoot{
+    background-color:#fff;
+    position:sticky;
+    bottom:0;
 }
 
 .add-roomtype-btn-1{
-    width:50%;
-    padding:5px 0;
+    width:300px;
+    background-color: #482200;
+    color:#f4f4f4;
+    font-size:16px;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:5px 35px;
 }
 
-/* .create-roomtype-body{
-    background-image:url('img/bagan2.jpg');
-    background-color:red;
-} */
+.roomtype-delete-btn{
+    background-color: #482200;
+    color:#f4f4f4;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:3px 10px;
+    opacity:0.95;
+}
 
 .create-roomtype-container{
     width:800px;
@@ -1172,7 +1198,7 @@ th {
 
 
     position:absolute;
-    top:1400px;
+    top:1200px;
     right:0px;
 }
 
@@ -1196,6 +1222,8 @@ th {
 .room-panel-table thead{
     position:sticky;
     top:0;
+
+    z-index:10;
 }
 
 .room-panel-table tfoot{
@@ -1236,5 +1264,79 @@ tr td{
     color:#482200;
     opacity:0.9;
 }
+
+/* **************************************Dashboard Booking Panel****************************** */
+.bookings-cancel-panel,.bookings-update-panel{
+    width:1050px;
+    max-height:450px;
+    overflow-y:auto;
+    /* Hide the scrollbar */
+    scrollbar-width: thin;
+    overflow: -moz-scrollbars-none;
+}
+
+.bookings-cancel-panel{
+    position:absolute;
+    top:1700px;
+    right:30px;
+}
+
+.bookings-update-panel{
+    position:absolute;
+    top:2000px;
+    right:30px;
+}
+
+.bookings-cancel-panel::-webkit-scrollbar,.bookings-update-panel::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+.bookings-cancel-panel::-webkit-scrollbar-thumb,.bookings-update-panel::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+.bookings-cancel-panel-table,.bookings-update-panel-table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+.bookings-cancel-panel-table thead th,.bookings-update-panel-table thead th{
+    background-color:#482200;
+    color:#f4f4f4;
+}
+
+.bookings-cancel-panel-table .rt,.bookings-update-panel-table .rt{
+    width:50px;
+}
+
+.bookings-cancel-panel-table .rn,.bookings-update-panel-table .rn{
+    width:50px;
+}
+
+.bookings-cancel-panel-table .bs,.bookings-update-panel-table .bs{
+    width:50px;
+}
+
+.bookings-cancel-panel-table td input{
+    width:80%;
+    background-color:transparent;
+    border:none;
+}
+
+.cancel-submit-btn{
+    background-color: #482200;
+    color:#f4f4f4;
+    border:1px solid transparent;
+    border-radius:3px;
+    padding:3px 10px;
+    opacity:0.95;
+}
+
+.bookings-update-panel-table select,.bookings-update-panel-table input{
+    border:none;
+    padding:2px 5px;
+    border-radius: 3px;
+}
+
 
 

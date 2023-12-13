@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Date;
 class DashboardController extends Controller
 {
     public function getDataForAdminDashboard(){
-        $bookings = Booking::all()->count();
+        // ******Dashboard***
+        $bookingsCount = Booking::all()->count();
         $scheduleBookings = Booking::where('status','pending')->count();
         $acceptedBookings = Booking::where('status','accepted')->count();
         $availableRooms = Room::all()->count() - Booking::all()->count();
@@ -22,14 +23,36 @@ class DashboardController extends Controller
         $checkinNumber = Booking::where('check_in_date',$todayDate)->count();
         $checkoutNumber = Booking::where('check_out_date',$todayDate)->count();
 
+        // *********Customer*******
         $getAllCustomer = Customer::all();
 
+        // *********Room Type********
         $roomtypes = RoomType::all();
 
+        // ***********Room*********
         $rooms = Room::all();
 
+        // ********Bookings********
+        $bookings = Booking::all();
+
+        // $booking->customer_id
+
+        // Booking::find(2)->customer->username
+
+        // Customer::find($booking->customer_id)->username
+
+
+        foreach($bookings as $booking){
+            $customer_id=$booking->customer_id;
+            $customerNames[] = Customer::where('id',$customer_id)->value('username');
+            $customerEmails[] = Customer::where('id',$customer_id)->value('email');
+        }
+
+        $ableToBookRoomNumber = Room::where('available_status','available')->get();
+
+
         return view('dashboard',[
-            'bookings'=>$bookings,
+            'bookingsCount'=>$bookingsCount,
             'scheduleBookings'=>$scheduleBookings,
             'acceptedBookings'=>$acceptedBookings,
             'availableRooms'=>$availableRooms,
@@ -37,8 +60,15 @@ class DashboardController extends Controller
             'checkoutNumber'=>$checkoutNumber,
             'customers'=>$getAllCustomer,
             'roomtypes'=>$roomtypes,
-            'rooms'=>$rooms
+            'rooms'=>$rooms,
+            'bookings'=>$bookings,
+            'customerNames'=>$customerNames,
+            'customerEmails'=>$customerEmails
         ]);
+    }
+
+    public function getCustomerName($id){
+        return Booking::find($id)->customer->username;
     }
 
     public function destroyCustomer($id){
@@ -108,4 +138,33 @@ class DashboardController extends Controller
         // $roomNumber->update(request()->all());
         return redirect('/dashboard')->with('room-success','Room availability updated successfully');
     }
+
+    public function destroyBooking($id){
+        Booking::find($id)->delete();
+        return redirect()->back()->with('success','Booking has been deleted successfully');
+    }
+
+    public function createUpdatedBooking(){
+
+        $available_rooms = Room::where('available_status','available')->get();
+        $statusOfBookings = Booking::all();
+
+        return view('create-updateBooking',[
+            'available_rooms'=>$available_rooms,
+            'statusOfBookings'=>$statusOfBookings
+        ]);
+    }
+
+    public function storeUpdatedBooking($id){
+        $booking = Booking::find($id);
+        $booking->room = request('update_room_number');
+        $booking->room_type = request('update_room_type');
+        $booking->check_in_date = request('check_in_date');
+        $booking->check_out_date = request('check_out_date');
+        $booking->status = request('booking_status');
+        $booking->save();
+        return redirect()->back();
+    }
+
+
 }
