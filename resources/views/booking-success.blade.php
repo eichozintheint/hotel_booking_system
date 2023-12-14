@@ -24,15 +24,15 @@
 
                     <a href="{{'/'}}">Overview</a>
 
-                    <a href="" style="color:#ce933b;font-weight:bold;">Booking History</a>
+                    <a href="" style="color:#ce933b;font-weight:bold;margin-left:15px;">Booking History</a>
 
-                    @if (Auth::guard('customers')->check())
+                    {{-- @if (Auth::guard('customers')->check())
                         <a href="/booking" style="margin-left:90px">Book Now</a>
                         <a href="/logout" style="margin-right:5px">Log out</a>
                         <a href="/customer/profile"><img src="img/person1.png" alt="" class="loggedin-cus-logo"></a>
                     @else
                         <a href="/login" style="margin-right:100px;">Login</a>
-                    @endif
+                    @endif --}}
                 </div>
 
         </header>
@@ -58,7 +58,7 @@
             <p>Check out date : {{$details->check_out_date}}</p>
             <p>Room Type : {{$selectedRoomTypeTitle}}</p>
             <p>Room Number : {{$details->room}}</p>
-            <p>Booking Status : {{$details->status}}</p>
+            <p>Booking Status : <span style="font-weight:bold">{{$details->status}}</span></p>
 
             <h3>Total price is {{$totalPrice}} MMK.</h3>
             <p style="font-style:italic">Thank you for choosing our service</p>

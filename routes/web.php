@@ -39,34 +39,48 @@ Route::group(['middleware'=>'customer.check'],function(){
 });
 
 
-// Dashboard - customers
-Route::get('/dashboard',[DashboardController::class,'getDataForAdminDashboard']);
-Route::delete('/dashboard/customers/delete/{id}',[DashboardController::class,'destroyCustomer']);
+// Admin Login
+Route::get('/admin/login',[LoginController::class,'adminLoginForm']);
+Route::post('/admin/dashboard',[LoginController::class,'adminLoggedin']);
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    // Dashboard - customers
+    Route::get('/dashboard', [DashboardController::class, 'getDataForAdminDashboard']);
 
-// Dashboard -  create roomType
-Route::get('/dashboard/createroomtype',[DashboardController::class,'createroomtype']);
-Route::post('/dashboard/createroomtype',[DashboardController::class,'storeroomtype']);
+    Route::delete('/dashboard/customers/delete/{id}',[DashboardController::class,'destroyCustomer']);
 
-// Dashboard - delete roomType
-Route::delete('/dashboard/roomtype/delete/{id}',[DashboardController::class,'destroyRoomtype']);
+    // Dashboard -  create roomType
+    Route::get('/dashboard/createroomtype',[DashboardController::class,'createroomtype']);
+    Route::post('/dashboard/createroomtype',[DashboardController::class,'storeroomtype']);
 
-// Dashboard - create room
-Route::get('/dashboard/createnewroom',[DashboardController::class,'createroom']);
-Route::post('/dashboard/createnewroom',[DashboardController::class,'storeroom']);
+    // Dashboard - delete roomType
+    Route::delete('/dashboard/roomtype/delete/{id}',[DashboardController::class,'destroyRoomtype']);
 
-// Dashboard - delete room
-Route::delete('/dashboard/room/delete/{id}',[DashboardController::class,'destroyRoom']);
+    // Dashboard - create room
+    Route::get('/dashboard/createnewroom',[DashboardController::class,'createroom']);
+    Route::post('/dashboard/createnewroom',[DashboardController::class,'storeroom']);
 
-// Dashboard - update room
-Route::get('/dashboard/room/update/{id}',[DashboardController::class,'createRoomUpdate']);
-Route::put('/dashboard/room/update/{id}',[DashboardController::class,'storeUpdateRoomAvailability']);
+    // Dashboard - delete room
+    Route::delete('/dashboard/room/delete/{id}',[DashboardController::class,'destroyRoom']);
 
-// Dashboard - delete booking
-Route::delete('/dashboard/bookings/delete/{id}',[DashboardController::class,'destroyBooking']);
+    // Dashboard - update room
+    Route::get('/dashboard/room/update/{id}',[DashboardController::class,'createRoomUpdate']);
+    Route::put('/dashboard/room/update/{id}',[DashboardController::class,'storeUpdateRoomAvailability']);
 
-// Dashboard - update booking
-// Route::get('/dashboard/bookings/update/{id}',[DashboardController::class,'createUpdatedBooking']);
-Route::put('/dashboard/bookings/update/{id}',[DashboardController::class,'storeUpdatedBooking']);
+    // Dashboard - delete booking
+    Route::delete('/dashboard/bookings/delete/{id}',[DashboardController::class,'destroyBooking']);
+
+    // Dashboard - update booking
+    // Route::get('/dashboard/bookings/update/{id}',[DashboardController::class,'createUpdatedBooking']);
+    Route::put('/dashboard/bookings/update/{id}',[DashboardController::class,'storeUpdatedBooking']);
+
+    // Admin Logout
+    Route::get('/logout',[LoginController::class,'adminLogout']);
+});
+
+
+
+
+
 
 
 

@@ -25,30 +25,42 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
         return redirect('/login')->with('error','Invalid email or password');
-        // $checkUser = Customer::where(['email'=>$email,'password'=>$password])->count();
-        // if($checkUser > 0){
-        //     $getUserData = Customer::where(['email'=>$email,'password'=>$password])->select('id')->first();
-        //     $customerID = $getUserData->id;
-        //     session()->put('customerID',$customerID);
-        //     // Session::has(['customerLogin'=>true,'data'=>$getUserData]);
-        //     $getUserType = Customer::where(['email'=>$email,'password'=>$password])->first();
-        //     if($getUserType->usertype === 'admin'){
-        //         return redirect()->intended('/dashboard');
-        //         // dd('admin');
-        //     }else{
-        //         return redirect()->intended('/');
-        //     }
-        // }
-        // else{
-        //     return redirect('/login')->with('error','Invalid email or password!');
-        // }
     }
 
 
-    public function logout(){
+    public function logout(Request $request): RedirectResponse
+    {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/');
     }
+
+    public function adminLoginForm(){
+        return view('adminLoginForm');
+    }
+
+    public function adminLoggedin(){
+        $email = request()->email;
+        $password = request()->password;
+        if(Auth::attempt(['email'=>$email,'password'=>$password])){
+            return redirect()->intended('admin/dashboard');
+        }
+        return redirect('/admin/login')->with('error','Invalid email or password');
+    }
+
+    public function adminLogout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/admin/login');
+    }
+
+
+    // public function adminLogin(){
+    //     $name = request()->
+    // }
 
 
 }

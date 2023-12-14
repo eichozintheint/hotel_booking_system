@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
 </head>
@@ -18,7 +18,7 @@
         <div class="sidebar">
 
             <div class="logo">
-                <img src="img/Img.jpg" alt="Img" class="logo-img">
+                <img src="/img/Img.jpg" alt="Img" class="logo-img">
             </div>
 
             <h3 class="logo-caption">Royal Bagan</h3>
@@ -37,7 +37,10 @@
                     <a href="#room-panel">Room</a>
                 </div>
                 <div class="cat5">
-                    <a href="#booking-panel">Bookings</a>
+                    <a href="#booking-cancel-panel">Cancel Bookings</a>
+                </div>
+                <div class="cat6">
+                    <a href="#booking-update-panel">Update Bookings</a>
                 </div>
                 {{-- <div class="cat6">
                     <a href="#review-panel">Review</a>
@@ -54,9 +57,9 @@
             {{-- ********************************Admin Account Panel***************************  --}}
             <div class="admin-account-panel">
 
-                <div class="searchbar">
+                {{-- <div class="searchbar">
                     <input type="text" name="search" class="search" placeholder="Search here...">
-                </div>
+                </div> --}}
 
                 <div class="notification">
                     <i class="fa-solid fa-bell"></i>
@@ -69,11 +72,11 @@
 
                 <div class="admin">
                     <a href="/admin-profile"><i class="fa-solid fa-user user-icon"></i></a><br/>
-                    <span>Admin <i class="fa-solid fa-check"></i></span>
+                    <span>{{Auth::user()->name}} <i class="fa-solid fa-check"></i></span>
                 </div>
 
                 <div class="adminLogout">
-                    <a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a><br/>
+                    <a href="/admin/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a><br/>
                     <span>Log out</span>
                 </div>
             </div>
@@ -182,7 +185,7 @@
                     @endforeach
 
                     <tr class="add-roomtype-btn">
-                        <form action="/dashboard/createroomtype" method="GET">
+                        <form action="/admin/dashboard/createroomtype" method="GET">
                             <td colspan="4">
                                 <button type="submit" class="add-roomtype-btn-1">Add Room Type</button>
                             </td>
@@ -213,13 +216,13 @@
                                 <td>{{$room->title}}</td>
                                 <td>{{$room->roomtype_id}}</td>
                                 <td>{{$room->available_status}}</td>
-                                <form action="/dashboard/room/update/{{$room->id}}" method="GET">
+                                <form action="/admin/dashboard/room/update/{{$room->id}}" method="GET">
                                     @csrf
                                     <td class="room-update-btn">
                                         <button type="submit" class="room-update-btn">Update</button>
                                     </td>
                                 </form>
-                                <form action="/dashboard/room/delete/{{$room->id}}" method="POST">
+                                <form action="/admin/dashboard/room/delete/{{$room->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <td class="room-delete-btn">
@@ -229,7 +232,7 @@
                             </tr>
                         @endforeach
                         <tfoot>
-                            <form action="/dashboard/createnewroom" method="GET">
+                            <form action="/admin/dashboard/createnewroom" method="GET">
                                 @csrf
                                 <td colspan="6">
                                     <button type="submit" class="addnewroom-btn">Add New Room</button>
@@ -258,7 +261,7 @@
                         @foreach ($bookings as $index => $booking)
                                 <tr>
                                     <td>{{ $booking->id }}</td>
-                                    <td>{{Auth::guard('customers')->user($booking->customer_id)->username}}</td>
+                                    <td>{{ isset($customerNames[$index]) ? $customerNames[$index] : '-' }}</td>
                                     <td>{{ isset($customerEmails[$index]) ? $customerEmails[$index] : '-' }}</td>
                                     <td class="rn">{{$booking->room}}</td>
                                     <td class="rt">{{ $booking->room_type }}</td>
@@ -266,7 +269,7 @@
                                     <td>{{ $booking->check_out_date }}</td>
                                     <td class="bs" name="status">{{$booking->status}}</td>
 
-                                    <form action="/dashboard/bookings/delete/{{$booking->id}}" method="POST">
+                                    <form action="/admin/dashboard/bookings/delete/{{$booking->id}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <td>
@@ -296,7 +299,7 @@
                     </thead>
                     <tbody>
                         @foreach ($bookings as $index => $booking)
-                        <form action="/dashboard/bookings/update/{{$booking->id}}" method="POST">
+                    <form action="/admin/dashboard/bookings/update/{{$booking->id}}" method="POST">
                         @csrf
                         @method('PUT')
                     <tr>

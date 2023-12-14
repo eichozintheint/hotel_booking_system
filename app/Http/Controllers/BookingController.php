@@ -45,7 +45,7 @@ class BookingController extends Controller
             $booking->room=request('room');
             // $booking->total_adault=request('adault');
             // $booking->total_child=request('child');
-            $booking->customer_id=session()->pull('customerID');
+            $booking->customer_id=Auth::guard('customers')->user()->id;
             $booking->save();
 
             $rooms = Room::all();

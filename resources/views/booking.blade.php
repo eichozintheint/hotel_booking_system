@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @livewireStyles
 </head>
@@ -15,7 +15,7 @@
     <div class="header-cover">
         <header>
             <a href="/">
-                <img src="img/Img.jpg" alt="Hotel Logo" style="max-width: 70px; margin-right: 1em;">
+                <img src="/img/Img.jpg" alt="Hotel Logo" style="max-width: 70px; margin-right: 1em;">
             </a>
 
                 <div class="addon">
@@ -24,14 +24,15 @@
 
                     <a href="{{'/'}}">Overview</a>
 
-                    @if (session('customerID'))
-                        {{-- <div class="bookingAndLogout" style="margin-left:180px"> --}}
-                            <a href="/booking" style="color:#ce933b;font-weight:bold;">Book Now</a>
-                            <a href="/logout" style="margin-right:5px">Log out</a>
-                        {{-- </div> --}}
-                    @else
-                        <a href="/logout" style="margin-right:100px;">Logout</a>
-                        {{-- <a href="/register">Register</a> --}}
+                    @if (Auth::guard('customers')->check())
+                        <div class="log_out"><a href="/logout" >Log out</a></div>
+                        <div class="customer_profile_img">
+                            <img src="img/person1.png" alt="" >
+                            <div class="customer_profile_box">
+                                <h5>Username : {{Auth::guard('customers')->user()->username}}</h5>
+                                <h5>Email : {{Auth::guard('customers')->user()->email}}</h5>
+                            </div>
+                        </div>
                     @endif
                 </div>
         </header>

@@ -8,6 +8,7 @@ use App\Models\Room;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -18,8 +19,8 @@ class DashboardController extends Controller
         $acceptedBookings = Booking::where('status','accepted')->count();
         $availableRooms = Room::all()->count() - Booking::all()->count();
 
-        $now = Date::now();
-        $todayDate = $now->toDateString();
+        $date = Carbon::now()->toDateString();
+        $todayDate = Carbon::parse($date)->addDay()->toDateString();
         $checkinNumber = Booking::where('check_in_date',$todayDate)->count();
         $checkoutNumber = Booking::where('check_out_date',$todayDate)->count();
 
@@ -41,7 +42,8 @@ class DashboardController extends Controller
 
         // Customer::find($booking->customer_id)->username
 
-
+        $customerNames = [];
+        $customerEmails = [];
         foreach($bookings as $booking){
             $customer_id=$booking->customer_id;
             $customerNames[] = Customer::where('id',$customer_id)->value('username');
@@ -94,12 +96,12 @@ class DashboardController extends Controller
             $roomtype->detail= $detail;
             $roomtype->save();
         }
-        return redirect('/dashboard');
+        return redirect('/admin/dashboard');
     }
 
     public function destroyRoomtype($id){
         RoomType::find($id)->delete();
-        return redirect('/dashboard')->with('success','Room Type deleted successfully');
+        return redirect('/admin/dashboard')->with('success','Room Type deleted successfully');
     }
 
     public function createroom(){
@@ -116,12 +118,12 @@ class DashboardController extends Controller
             $room->roomtype_id=$roomtype_id;
             $room->save();
         }
-        return redirect('/dashboard')->with('success','New Room created successfully');
+        return redirect('/admin/dashboard')->with('success','New Room created successfully');
     }
 
     public function destroyRoom($id){
         Room::find($id)->delete();
-        return redirect('/dashboard')->with('success','Room deleted successfully');
+        return redirect('/admin/dashboard')->with('success','Room deleted successfully');
     }
 
     public function createRoomUpdate($id){
@@ -137,7 +139,7 @@ class DashboardController extends Controller
         $roomNumber->available_status=request('available-status');
         $roomNumber->save();
         // $roomNumber->update(request()->all());
-        return redirect('/dashboard')->with('room-success','Room availability updated successfully');
+        return redirect('/admin/dashboard')->with('room-success','Room availability updated successfully');
     }
 
     public function destroyBooking($id){

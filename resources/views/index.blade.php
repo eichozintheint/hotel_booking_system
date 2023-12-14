@@ -130,7 +130,7 @@
                     </div>
                     <div id="Teap">
                         <p>
-                            Indulge in the rich flavors of Burma with our hotel's specialty, the Burmese national dish - tea leaves salad. Experience a harmonious blend of fermented tea leaves, crunchy nuts, and vibrant vegetables, creating a delightful burst of textures and tastes. Immerse yourself in the authentic culinary journey of Myanmar right at our doorstep.
+                            Indulge in the rich flavors of Burma with our hotel's specialty, the Burmese national dish - tea leaves salad. Experience a harmonious blend of fermented tea leaves, crunchy nuts, and vibrant vegetables, creating a delightful burst of textures and tastes.
                         </p>
                     </div>
                 </div>
@@ -179,18 +179,127 @@
         </div>
     </div>
     <section id="gallery" class="section">
+        <h1>Our Gallery</h1>
+        <div class="slider-container">
+            <div class="slider">
+                <a href="img/a.jpeg" target="_blank">
+                    <img src="img/a.jpeg" alt="Image 1" class="Image">
+                </a>
+                <a href="img/b.jpeg" target="_blank">
+                    <img src="img/b.jpeg" alt="Image 2" class="Image">
+                </a>
+                <a href="img/c.jpeg" target="_blank">
+                    <img src="img/c.jpeg" alt="Image 3" class="Image">
+                </a>
+                <a href="img/d.jpeg" target="_blank">
+                    <img src="img/d.jpeg" alt="Image 4" class="Image">
+                </a>
+                <a href="img/e.jpeg" target="_blank">
+                    <img src="img/e.jpeg" alt="Image 5" class="Image">
+                </a>
+                <a href="img/f.jpg" target="_blank">
+                    <img src="img/f.jpg" alt="Image 6" class="Image">
+                </a>
+                <a href="img/g.jpg" target="_blank">
+                    <img src="img/g.jpg" alt="Image 7" class="Image">
+                </a>
+                <a href="img/h.jpg" target="_blank">
+                    <img src="img/h.jpg" alt="Image 8" class="Image">
+                </a>
+                <a href="img/i.jpg" target="_blank">
+                    <img src="img/i.jpg" alt="Image 9" class="Image">
+                </a>
+                <a href="img/j.jpg" target="_blank">
+                    <img src="img/j.jpg" alt="Image 10" class="Image">
+                </a>
+                <a href="img/k.jpg" target="_blank">
+                    <img src="img/k.jpg" alt="Image 11" class="Image">
+                </a>
+                <a href="img/l.jpg" target="_blank">
+                    <img src="img/l.jpg" alt="Image 12" class="Image">
+                </a>
+                <a href="img/m.jpg" target="_blank">
+                    <img src="img/m.jpg" alt="Image 13" class="Image">
+                </a>
+                <a href="img/n.jpg" target="_blank">
+                    <img src="img/n.jpg" alt="Image 14" class="Image">
+                </a>
+                <a href="img/o.jpg" target="_blank">
+                    <img src="img/o.jpg" alt="Image 15" class="Image">
+                </a>
+                <a href="img/p.jpg" target="_blank">
+                    <img src="img/p.jpg" alt="Image 16" class="Image">
+                </a>
+                <a href="img/q.jpg" target="_blank">
+                    <img src="img/q.jpg" alt="Image 17" class="Image">
+                </a>
+                <a href="img/r.jpeg" target="_blank">
+                    <img src="img/r.jpeg" alt="Image 18" class="Image">
+                </a>
+                <a href="img/s.jpeg" target="_blank">
+                    <img src="img/s.jpeg" alt="Image 19" class="Image">
+                </a>
+            </div>
+            <div class="slider-scrollbar">
+                <div class="scrollbar-track"></div>
+            </div>
+        </div>
     </section>
     <section id="activities" class="section">
         <h2>Activities</h2>
-        <p>
-            Experience a variety of activities, from spa treatments to adventurous excursions, ensuring a fulfilling
-            stay for every guest.
-        </p>
+        <div class="activity-container">
+            <div class="activity">
+                <div class="activity-wrapper">
+                    <img src="img/swim.jpg" alt="Activity 1">
+                </div>
+                <div class="p">
+                    <h3>Swimming for Relax</h3>
+                    <p>Dive into relaxation at Royal Bagan Hotel, where our inviting swimming pool awaits to provide a refreshing escape. Enjoy leisurely swims, poolside lounging, and exclusive pool activities.</p>
+                </div>
+            </div>
+
+                <div class="activity">
+                    <div class="activity-wrapper">
+                        <img src="img/hor.jpg" alt="Activity 2">
+                    </div>
+                    <div class="p">
+                        <h3>Horse Back Riding</h3>
+                        <p>Experience the charm of Bagan in a unique and leisurely way with Royal Bagan Hotel's exclusive offering of horse cart rides, allowing you to explore the ancient wonders of the city in a delightful and memorable fashion.</p>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="activity-wrapper">
+                        <img src="img/Ball.jpg" alt="Activity 3">
+                    </div>
+                    <div class="p">
+                        <h3>Balloon Over Bagan</h3>
+                        <p>Embark on a breathtaking aerial adventure with Royal Bagan Hotel's exclusive balloon rides, where guests can savor the awe-inspiring beauty of Bagan's ancient temples and landscapes from the skies.</p>
+                    </div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-wrapper">
+                            <img src="img/hose.jpg" alt="Activity 4">
+                        </div>
+                        <div class="p">
+                            <h3>Horse Cart Riding</h3>
+                            <p>Immerse yourself in the essence of Bagan with Royal Bagan Hotel's exclusive horse riding experience in collaboration with U Paung Kyar Horse Stable, providing unforgettable tour around the historic city.</p>
+                        </div>
+                        </div>
+                </div>
     </section>
 
-    <section id="map" class="section" style=" width:1450px">
+    <section id="map" class="section">
         <div id="mapp">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.2583139944545!2d94.9045207!3d21.1934221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30b5fab9bff8baaf%3A0xf6aa13baf9079b1e!2sRoyal%20Bagan%20Hotel!5e0!3m2!1sen!2suk!4v1646909869169!5m2!1sen!2suk" style="width: 100%; height: 300px; border: 0;" frameborder="0" allowfullscreen></iframe>
+            <div class="contact-info-box">
+                <h2>Contact Us</h2>
+                <p class="margin-bottom-10">_______</p>
+                <p>Royal Bagan Hotel</p>
+                <p>Anawrahta Road,</p>
+                <p>Nyaungoo, Myanmar</p>
+                <p>+959 446 446 001</p>
+                <p>royalbaganhotel@gmail.com</p>
+            </div>
         </div>
         <div class="clear"></div>
     </section>
