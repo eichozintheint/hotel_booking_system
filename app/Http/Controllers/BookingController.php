@@ -128,8 +128,8 @@ class BookingController extends Controller
             'details'=>Booking::latest()->first(),
             'selectedRoomTypeTitle'=>$selectedRoomTypeTitle,
             'totalPrice'=>$totalPrice,
-            'bookingCustomer'=> Booking::latest()->first()->customer->username,
-            'bookingEmail'=> Booking::latest()->first()->customer->email,
+            // 'bookingCustomer'=> Booking::latest()->first()->customer->username,
+            // 'bookingEmail'=> Booking::latest()->first()->customer->email,
             'totalDays'=>$daysDifference
         ]);
     }

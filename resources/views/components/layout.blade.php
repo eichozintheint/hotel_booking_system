@@ -22,21 +22,29 @@
             <a href="#activities">Activities</a>
         </nav>
             <div class="addon">
-
-                {{-- <a href="{{session()->pull('customerID') ? '/booking' : '/login'}}">Book Now</a> --}}
-
-
-
-                @if (session('customerID'))
-                    {{-- <div class="bookingAndLogout" style="margin-left:180px"> --}}
-                        <a href="/booking" style="margin-left:90px">Book Now</a>
-                        <a href="/logout" style="margin-right:5px">Log out</a>
-                    {{-- </div> --}}
+                @if (Auth::guard('customers')->check())
+                    <div class="book_now"><a href="/booking" >Book Now</a></div>
+                    <div class="log_out"><a href="/logout" >Log out</a></div>
+                    <div class="customer_profile_img">
+                        <img src="img/person1.png" alt="" >
+                        <div class="customer_profile_box">
+                            <h5>Username : {{Auth::guard('customers')->user()->username}}</h5>
+                            <h5>Email : {{Auth::guard('customers')->user()->email}}</h5>
+                        </div>
+                    </div>
                 @else
                     <a href="/login" style="margin-right:100px;">Login</a>
-                    {{-- <a href="/register">Register</a> --}}
                 @endif
+
+                {{-- @if (session('customerID'))
+                        <a href="/booking" style="margin-left:90px">Book Now</a>
+                        <a href="/logout" style="margin-right:5px">Log out</a>
+                @else
+                    <a href="/login" style="margin-right:100px;">Login</a>
+                @endif --}}
             </div>
+
+
 
     </header>
 

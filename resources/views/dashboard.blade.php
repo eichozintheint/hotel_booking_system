@@ -39,9 +39,9 @@
                 <div class="cat5">
                     <a href="#booking-panel">Bookings</a>
                 </div>
-                <div class="cat6">
+                {{-- <div class="cat6">
                     <a href="#review-panel">Review</a>
-                </div>
+                </div> --}}
             </div>
 
         </div>
@@ -258,7 +258,7 @@
                         @foreach ($bookings as $index => $booking)
                                 <tr>
                                     <td>{{ $booking->id }}</td>
-                                    <td>{{ isset($customerNames[$index]) ? $customerNames[$index] : '-' }}</td>
+                                    <td>{{Auth::guard('customers')->user($booking->customer_id)->username}}</td>
                                     <td>{{ isset($customerEmails[$index]) ? $customerEmails[$index] : '-' }}</td>
                                     <td class="rn">{{$booking->room}}</td>
                                     <td class="rt">{{ $booking->room_type }}</td>
@@ -296,27 +296,29 @@
                     </thead>
                     <tbody>
                         @foreach ($bookings as $index => $booking)
-                    <tr>
                         <form action="/dashboard/bookings/update/{{$booking->id}}" method="POST">
                         @csrf
                         @method('PUT')
+                    <tr>
+
                         <td>{{ $booking->id }}</td>
                         <td>{{ isset($customerNames[$index]) ? $customerNames[$index] : '-' }}</td>
                         <td>{{ isset($customerEmails[$index]) ? $customerEmails[$index] : '-' }}</td>
                         <td class="rn">
                             <select name="update_room_number" id="">
                                 <option value="{{ $booking->room }}">{{ $booking->room }}</option>
-                                @foreach ($rooms as $room)
-                                    @if($room->available_status === 'available')
+                                @foreach ($ableToBookNumbers as $ableToBookNumber)
+                                    <option value="{{$ableToBookNumber->title}}">{{$ableToBookNumber->title}}</option>
+                                    {{-- @if($room->available_status === 'available')
                                         <option value="{{ $room->title }}">{{ $room->title }}</option>
-                                    @endif
+                                    @endif --}}
                                 @endforeach
                             </select>
                         </td>
                         <td class="rt">
                             <select name="update_room_type" id="">
                                 @foreach ($roomtypes as $roomtype)
-                                    <option value="{{ $roomtype->id }}">{{ $roomtype->name }}</option>
+                                    <option value="{{$roomtype->id}}">{{$roomtype->id}}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -340,8 +342,9 @@
                         <td>
                             <button type="submit" class="cancel-submit-btn">Update</button>
                          </td>
-                        </form>
+
                     </tr>
+                    </form>
                     @endforeach
 
                     </tbody>

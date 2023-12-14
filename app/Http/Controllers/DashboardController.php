@@ -48,7 +48,7 @@ class DashboardController extends Controller
             $customerEmails[] = Customer::where('id',$customer_id)->value('email');
         }
 
-        $ableToBookRoomNumber = Room::where('available_status','available')->get();
+        $ableToBookRoomNumbers = Room::where('available_status','available')->get();
 
 
         return view('dashboard',[
@@ -63,7 +63,8 @@ class DashboardController extends Controller
             'rooms'=>$rooms,
             'bookings'=>$bookings,
             'customerNames'=>$customerNames,
-            'customerEmails'=>$customerEmails
+            'customerEmails'=>$customerEmails,
+            'ableToBookNumbers'=>$ableToBookRoomNumbers
         ]);
     }
 

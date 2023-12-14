@@ -21,27 +21,32 @@ class LoginController extends Controller
     public function customerLoggedin(){
         $email = request()->email;
         $password = request()->password;
-        $checkUser = Customer::where(['email'=>$email,'password'=>$password])->count();
-        if($checkUser > 0){
-            $getUserData = Customer::where(['email'=>$email,'password'=>$password])->select('id')->first();
-            $customerID = $getUserData->id;
-            session()->put('customerID',$customerID);
-            // Session::has(['customerLogin'=>true,'data'=>$getUserData]);
-            $getUserType = Customer::where(['email'=>$email,'password'=>$password])->first();
-            if($getUserType->usertype === 'admin'){
-                return redirect()->intended('/dashboard');
-                // dd('admin');
-            }else{
-                return redirect()->intended('/');
-            }
+        if(Auth::guard('customers')->attempt(['email'=>$email,'password'=>$password])){
+            return redirect()->intended('/');
         }
-        else{
-            return redirect('/login')->with('error','Invalid email or password!');
-        }
+        return redirect('/login')->with('error','Invalid email or password');
+        // $checkUser = Customer::where(['email'=>$email,'password'=>$password])->count();
+        // if($checkUser > 0){
+        //     $getUserData = Customer::where(['email'=>$email,'password'=>$password])->select('id')->first();
+        //     $customerID = $getUserData->id;
+        //     session()->put('customerID',$customerID);
+        //     // Session::has(['customerLogin'=>true,'data'=>$getUserData]);
+        //     $getUserType = Customer::where(['email'=>$email,'password'=>$password])->first();
+        //     if($getUserType->usertype === 'admin'){
+        //         return redirect()->intended('/dashboard');
+        //         // dd('admin');
+        //     }else{
+        //         return redirect()->intended('/');
+        //     }
+        // }
+        // else{
+        //     return redirect('/login')->with('error','Invalid email or password!');
+        // }
     }
 
+
     public function logout(){
-        session()->forget('customerID');
+        Auth::logout();
         return redirect('/');
     }
 

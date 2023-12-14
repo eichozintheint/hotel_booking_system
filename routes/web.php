@@ -27,13 +27,17 @@ Route::post('/register',[CustomerController::class,'store']);
 Route::get('/login',[LoginController::class,'createLoginForm']);
 Route::post('/',[LoginController::class,'customerLoggedin']);
 
-Route::get('/logout',[LoginController::class,'logout']);
+Route::group(['middleware'=>'customer.check'],function(){
+    Route::get('/customer/profile',[LoginController::class,'customerProfileView']);
+    Route::get('/logout',[LoginController::class,'logout']);
 
-Route::get('/booking',[BookingController::class,'BookingCreate']);
-Route::post('/booking',[BookingController::class,'store']);
-// Route::livewire('/handle-rooms', HandleRooms::class);
+    Route::get('/booking',[BookingController::class,'BookingCreate']);
+    Route::post('/booking',[BookingController::class,'store']);
+    // Route::livewire('/handle-rooms', HandleRooms::class);
 
-Route::get('/booking-success',[BookingController::class,'show']);
+    Route::get('/booking-success',[BookingController::class,'show']);
+});
+
 
 // Dashboard - customers
 Route::get('/dashboard',[DashboardController::class,'getDataForAdminDashboard']);

@@ -26,14 +26,12 @@
 
                     <a href="" style="color:#ce933b;font-weight:bold;">Booking History</a>
 
-                    @if (session('customerID'))
-                        {{-- <div class="bookingAndLogout" style="margin-left:180px"> --}}
-                            <a href="/booking" style="color:#ce933b;font-weight:bold;">Book Now</a>
-                            <a href="/logout" style="margin-right:5px">Log out</a>
-                        {{-- </div> --}}
+                    @if (Auth::guard('customers')->check())
+                        <a href="/booking" style="margin-left:90px">Book Now</a>
+                        <a href="/logout" style="margin-right:5px">Log out</a>
+                        <a href="/customer/profile"><img src="img/person1.png" alt="" class="loggedin-cus-logo"></a>
                     @else
-                        <a href="/logout" style="margin-right:100px;">Logout</a>
-                        {{-- <a href="/register">Register</a> --}}
+                        <a href="/login" style="margin-right:100px;">Login</a>
                     @endif
                 </div>
 
@@ -48,8 +46,10 @@
         <div class="first-container">
             <h2>Booking History</h2>
 
-            <h3>Username : {{$bookingCustomer}}</h3>
-            <h3>Email : {{$bookingEmail}}</h3>
+            {{-- <h3>Username : {{$bookingCustomer}}</h3> --}}
+            {{-- <h3>Email : {{$bookingEmail}}</h3> --}}
+            <h3>Username : {{Auth::guard('customers')->user()->username}}</h3>
+            <h3>Email : {{Auth::guard('customers')->user()->email}}</h3>
             <h4>Total Booking Days : {{$totalDays}}</h4>
         </div>
 

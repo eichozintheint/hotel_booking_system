@@ -27,7 +27,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->username=request()->username;
         $customer->email=request()->email;
-        $customer->password=request()->password;
+        $customer->password=bcrypt(request()->password);
         $customer->save();
 
         $ref=request()->ref;
